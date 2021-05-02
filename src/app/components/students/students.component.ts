@@ -73,4 +73,8 @@ export class StudentsComponent implements OnInit {
       this.detailsId = id;
     }
   }
+
+  advancedSearch(): void {
+    this.router.navigate(['students/advanced-search']);
+  }
 }

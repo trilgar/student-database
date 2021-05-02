@@ -8,19 +8,23 @@ import {StudentsComponent} from './components/students/students.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormBuilder, FormsModule} from '@angular/forms';
 import {CreateStudentComponent} from './components/create-student/create-student.component';
+import { StudentAdvancedSearchComponent } from './components/advanced-search/student-advanced-search.component';
+import {NgSelectModule} from "@ng-select/ng-select";
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     StudentsComponent,
-    CreateStudentComponent
+    CreateStudentComponent,
+    StudentAdvancedSearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgSelectModule
   ],
   providers: [FormBuilder],
   bootstrap: [AppComponent]
