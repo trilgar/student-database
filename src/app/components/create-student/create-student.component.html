@@ -1,0 +1,82 @@
+<div class="container-md">
+  <div class="row">
+    <h3 class="display-4 black">Create new Student</h3>
+    <button class="options mt-4 ml-5" (click)="goBack()">
+      Back to Students
+    </button>
+  </div>
+
+  <div class="alert alert-warning col-md-10 mt-5" role="alert" *ngIf="this.warningMessage">
+    {{this.warningMessage}}
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Name</span>
+      <input required maxlength="100" type="text"
+             class="form-control"
+             [(ngModel)]="newStudent.name">
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Group</span>
+      <select class="form-control" [(ngModel)]="newStudent.idGroup">
+        <option *ngFor="let group of listGroups" [ngValue]="group.id" >
+          {{group.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Faculty</span>
+      <select class="form-control" [(ngModel)]="newStudent.idFaculty">
+        <option *ngFor="let faculty of listFaculties" [ngValue]="faculty.id" >
+          {{faculty.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Stipendium</span>
+      <input type="number"
+             class="form-control"
+             [(ngModel)]="newStudent.stipendium">
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Gender</span>
+      <select class="form-control" [(ngModel)]="newStudent.gender">
+        <option *ngFor="let gender of genderList" [ngValue]="gender" >
+          {{gender}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Age</span>
+      <input type="number"
+             class="form-control"
+             [(ngModel)]="newStudent.age">
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Kids</span>
+      <input type="number"
+             class="form-control"
+             [(ngModel)]="newStudent.kids">
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="col-lg-4 m-0 p-0">
+      <button class="options-table" (click)="createStudent()">
+        Create
+      </button>
+    </div>
+  </div>
+</div>
+
