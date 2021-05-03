@@ -1,0 +1,108 @@
+<div class="container-md">
+  <div class="row">
+    <h3 class="display-4 black">Advanced Search for Students</h3>
+    <button class="options mt-4 ml-5" (click)="goBack()">
+      Back to Students
+    </button>
+  </div>
+
+  <div class="alert alert-warning col-md-10 mt-5" role="alert" *ngIf="this.warningMessage">
+    {{this.warningMessage}}
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Select Search Type</span>
+      <select class="form-control" [(ngModel)]="selectedSearchType">
+        <option *ngFor="let searchType of searchTypeList" [ngValue]="searchType">
+          {{searchType}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div *ngIf="selectedSearchType === 'by discipline'">
+    <div class="input-group mt-3">
+      <div class="input-group-prepend">
+        <ng-select [items]="listGroups"
+                   bindLabel="name"
+                   placeholder="Select groups"
+                   appendTo="body"
+                   multiple="true"
+                   [(ngModel)]="selectedGroups" (change)="disciplineDropdownActualise()">
+        </ng-select>
+      </div>
+    </div>
+
+    <div class="input-group mt-3" *ngIf="selectedGroups.length!=0">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Discipline</span>
+        <select class="form-control" [(ngModel)]="selectedDiscipline">
+          <option *ngFor="let discipline of listDisciplines" [ngValue]="discipline.id">
+            type:{{discipline.type}} name:{{discipline.name}} course:{{discipline.course}} semester:{{discipline.semester}} groupId: {{discipline.idGroup}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="input-group mt-3" *ngIf="selectedGroups.length!=0">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Mark</span>
+        <input type="number"
+               class="form-control"
+               [(ngModel)]="selectedMark">
+      </div>
+    </div>
+    <button class="options-table mt-2" (click)="onSubmit()" *ngIf="selectedDiscipline!= -1 && selectedGroups.length!=0">
+      Search
+    </button>
+
+
+  </div>
+</div>
+
+<div class="container-md">
+  <div *ngIf="students?.length == 0" class="alert alert-warning col-md-10 mt-5" role="alert">
+    No students found.
+  </div>
+  <div class="alert alert-warning col-md-10 mt-5" role="alert" *ngIf="this.warningMessage">
+    {{this.warningMessage}}
+  </div>
+  <div class="mt-5 row" *ngIf="students.length !== 0">
+    <div class="custom-table black">
+      <div class="row thead">
+        <div class="col-1">ID</div>
+        <div class="col-3">Name</div>
+        <div class="col-1">ID Group</div>
+        <div class="col-1">ID Faculty</div>
+        <div class="col-4">Options</div>
+
+      </div>
+
+      <div class="mt-5 stripped">
+        <div *ngFor="let student of students; index as i">
+          <div class="row">
+            <div class="col-1">{{student.id}}</div>
+            <div class="col-3">{{student.name}}</div>
+            <div class="col-1">{{student.idGroup}}</div>
+            <div class="col-1">{{student.idFaculty}}</div>
+            <div class="col-4 pt-2">
+              <button class="options-table" (click)="deleteStudent(student.id)">
+                Delete
+              </button>
+              <button class="options-table ml-1" (click)="this.showDetails(student.id);">
+                Details
+              </button>
+            </div>
+            <div class="row mt-1" *ngIf="student.id == this.detailsId">
+              <div class="col-5">Stipendium:{{student.stipendium}}</div>
+              <div class="col-5">Gender:{{student.gender}}</div>
+              <div class="col-5">Age:{{student.age}}</div>
+              <div class="col-5">Kids:{{student.kids}}</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

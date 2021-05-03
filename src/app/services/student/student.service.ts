@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Student} from '../../models/Student';
 import {environment} from '../../../environments/environment';
+import {SearchDto} from '../../components/advanced-search/student-advanced-search.component';
+import {Group} from '../../components/create-student/create-student.component';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +27,28 @@ export class StudentService {
   createStudent(student: Student): Observable<Student> {
     const url = `${environment.backend_url}/api/students`;
     return this.http.post<Student>(url, student);
+  }
+
+  getByGroup(filterDto: SearchDto): Observable<Student[]> {
+    const url = `${environment.backend_url}/api/students/by_group`;
+    return this.http.post<Student[]>(url, filterDto);
+  }
+
+  getByCourse(filterDto: SearchDto): Observable<Student[]> {
+    const url = `${environment.backend_url}/api/students/by_course`;
+    return this.http.post<Student[]>(url, filterDto);
+  }
+
+  getByDiscipline(groups: Group[], idDiscipline: number, examMark: number): Observable<Student[]> {
+    let groupString = '';
+    const groupIds = groups.map(group => group.id).map((grpId) => {
+      groupString += grpId + ',';
+    });
+    console.log('groupIds:', groupString);
+    groupString.substring(0, groupString.length - 1);
+    const url = `${environment.backend_url}/api/students/by_disc_and_mark?groups=${groupString}&idDiscipline=${idDiscipline}&mark=${examMark}`;
+    console.log('sending ', url);
+    return this.http.get<Student[]>(url);
   }
 }
 

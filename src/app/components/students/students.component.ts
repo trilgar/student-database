@@ -77,4 +77,8 @@ export class StudentsComponent implements OnInit {
   advancedSearch(): void {
     this.router.navigate(['students/advanced-search']);
   }
+
+  markSearch(): void {
+    this.router.navigate(['students/search-by-mark']);
+  }
 }

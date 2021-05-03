@@ -14,15 +14,12 @@
     <div class="input-group-prepend">
       <span class="input-group-text">Select Search Type</span>
       <select class="form-control" [(ngModel)]="selectedSearchType">
-        <option *ngFor="let searchType of searchTypeList" [ngValue]="searchType" >
+        <option *ngFor="let searchType of searchTypeList" [ngValue]="searchType">
           {{searchType}}
         </option>
       </select>
     </div>
   </div>
-
-
-
 
 
   <div class="input-group mt-3" *ngIf="selectedSearchType === 'Group'">
@@ -58,6 +55,15 @@
                  multiple="true"
                  [(ngModel)]="selectedFilters">
       </ng-select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3" *ngIf="selectedFilters.includes('select by name')">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Name Like</span>
+      <input required maxlength="100" type="text"
+             class="form-control"
+             [(ngModel)]="name">
     </div>
   </div>
   <div class="input-group mt-3" *ngIf="selectedFilters.includes('select by gender')">
@@ -108,5 +114,58 @@
       <span class="input-group-text">Has Kids</span>
     </div>
   </div>
+  <div class="input-group mt-3">
+    <div class="col-lg-4 m-0 p-0">
+      <button class="options-table" (click)="onSubmit()" *ngIf="selectedCourses.length!=0 || selectedGroups.length!=0">
+        Search
+      </button>
+    </div>
+  </div>
 </div>
 
+<div class="container-md">
+  <div *ngIf="students?.length == 0" class="alert alert-warning col-md-10 mt-5" role="alert">
+    No students found.
+  </div>
+  <div class="alert alert-warning col-md-10 mt-5" role="alert" *ngIf="this.warningMessage">
+    {{this.warningMessage}}
+  </div>
+  <div class="mt-5 row" *ngIf="students.length !== 0">
+    <div class="custom-table black">
+      <div class="row thead">
+        <div class="col-1">ID</div>
+        <div class="col-3">Name</div>
+        <div class="col-1">ID Group</div>
+        <div class="col-1">ID Faculty</div>
+        <div class="col-4">Options</div>
+
+      </div>
+
+      <div class="mt-5 stripped">
+        <div *ngFor="let student of students; index as i">
+          <div class="row">
+            <div class="col-1">{{student.id}}</div>
+            <div class="col-3">{{student.name}}</div>
+            <div class="col-1">{{student.idGroup}}</div>
+            <div class="col-1">{{student.idFaculty}}</div>
+            <div class="col-4 pt-2">
+              <button class="options-table" (click)="deleteStudent(student.id)">
+                Delete
+              </button>
+              <button class="options-table ml-1" (click)="this.showDetails(student.id);">
+                Details
+              </button>
+            </div>
+            <div class="row mt-1" *ngIf="student.id == this.detailsId">
+              <div class="col-5">Stipendium:{{student.stipendium}}</div>
+              <div class="col-5">Gender:{{student.gender}}</div>
+              <div class="col-5">Age:{{student.age}}</div>
+              <div class="col-5">Kids:{{student.kids}}</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

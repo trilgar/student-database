@@ -77,7 +77,11 @@ input.au-input.au-input-xl{
 .options:focus {
   outline: none;
 }
-
+.error-message:hover{
+  background-color: #c63737;
+  cursor: pointer;
+  color: #f8f8f8;
+}
 #createUser {
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
