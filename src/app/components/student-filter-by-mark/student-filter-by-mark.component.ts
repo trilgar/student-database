@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {Discipline, DisciplineService} from "../../services/discipline/discipline.service";
-import {StudentService} from "../../services/student/student.service";
-import {Group} from "../create-student/create-student.component";
-import {take} from "rxjs/operators";
-import {GroupService} from "../../services/group/group.service";
-import {Faculty, FacultyService} from "../../services/faculty/faculty.service";
-import {CourseService} from "../../services/course/course.service";
+import {Router} from '@angular/router';
+import {Discipline, DisciplineService} from '../../services/discipline/discipline.service';
+import {StudentService} from '../../services/student/student.service';
+import {Group} from '../create-student/create-student.component';
+import {take} from 'rxjs/operators';
+import {GroupService} from '../../services/group/group.service';
+import {Faculty, FacultyService} from '../../services/faculty/faculty.service';
+import {CourseService} from '../../services/course/course.service';
 
 @Component({
   selector: 'app-student-filter-by-mark',
@@ -17,20 +17,27 @@ export class StudentFilterByMarkComponent implements OnInit {
 
   warningMessage: string;
 
-  selectedSearchType: 'by discipline';
+  selectedSearchType = 'by discipline';
   searchTypeList = ['by discipline', 'by faculty'];
 
   listGroups: Group[];
   listFaculties: Faculty[];
   listDisciplines: Discipline[];
 
+  searchType2Layer: 'by group list';
+  listSearch2LayerType = ['by group list', 'by course'];
+
   selectedGroups = [];
-  selectedFaculty: number;
+  selectedFaculty = -1;
   selectedDiscipline = -1;
   selectedMark = 5;
+  selectedCourse = 1;
+
+  selectedSemester = 1;
 
   students = [];
   detailsId = -1;
+
 
   constructor(private router: Router, private disciplineService: DisciplineService,
               private studentService: StudentService, private grpService: GroupService,
@@ -105,6 +112,16 @@ export class StudentFilterByMarkComponent implements OnInit {
       this.detailsId = -1;
     } else {
       this.detailsId = id;
+    }
+  }
+
+  onSubmit2(): void {
+    if (this.searchType2Layer === 'by group list') {
+      this.studentService.getByFacultyAndGroups(this.selectedGroups, this.selectedFaculty, this.selectedSemester, this.selectedMark)
+        .pipe(take(1)).subscribe(data => this.students = data);
+    } else {
+      this.studentService.getByFacultyAndCourse(this.selectedCourse, this.selectedFaculty, this.selectedSemester, this.selectedMark)
+        .pipe(take(1)).subscribe(data => this.students = data);
     }
   }
 }

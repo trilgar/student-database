@@ -81,4 +81,8 @@ export class StudentsComponent implements OnInit {
   markSearch(): void {
     this.router.navigate(['students/search-by-mark']);
   }
+
+  semesterRange(): void {
+    this.router.navigate(['students/semester-range']);
+  }
 }

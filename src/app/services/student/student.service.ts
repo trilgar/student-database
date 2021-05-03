@@ -44,10 +44,26 @@ export class StudentService {
     const groupIds = groups.map(group => group.id).map((grpId) => {
       groupString += grpId + ',';
     });
-    console.log('groupIds:', groupString);
     groupString.substring(0, groupString.length - 1);
     const url = `${environment.backend_url}/api/students/by_disc_and_mark?groups=${groupString}&idDiscipline=${idDiscipline}&mark=${examMark}`;
-    console.log('sending ', url);
+    return this.http.get<Student[]>(url);
+  }
+
+  getByFacultyAndGroups(groups: Group[], facultyId: number, semester: number, mark: number): Observable<Student[]>{
+    let groupString = '';
+    const groupIds = groups.map(group => group.id).map((grpId) => {
+      groupString += grpId + ',';
+    });
+    groupString.substring(0, groupString.length - 1);
+
+    const url = `${environment.backend_url}/api/students/by_grp_mrk?groups=${groupString}&idFaculty=${facultyId}&mark=${mark}&semester=${semester}`;
+    console.log('sending', url);
+    return this.http.get<Student[]>(url);
+  }
+
+  getByFacultyAndCourse(course: number, facultyId: number, semester: number, mark: number): Observable<Student[]>{
+    const url = `${environment.backend_url}/api/students/by_crs_mrk?course=${course}&idFaculty=${facultyId}&mark=${mark}&semester=${semester}`;
+    console.log('sending', url);
     return this.http.get<Student[]>(url);
   }
 }

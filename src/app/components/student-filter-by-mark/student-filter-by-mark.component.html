@@ -1,15 +1,10 @@
 <div class="container-md">
   <div class="row">
-    <h3 class="display-4 black">Advanced Search for Students</h3>
+    <h3 class="display-4 black">Search for Students ByMarks</h3>
     <button class="options mt-4 ml-5" (click)="goBack()">
       Back to Students
     </button>
   </div>
-
-  <div class="alert alert-warning col-md-10 mt-5" role="alert" *ngIf="this.warningMessage">
-    {{this.warningMessage}}
-  </div>
-
   <div class="input-group mt-3">
     <div class="input-group-prepend">
       <span class="input-group-text">Select Search Type</span>
@@ -20,7 +15,7 @@
       </select>
     </div>
   </div>
-
+  <!--case discipline Search type selected-->
   <div *ngIf="selectedSearchType === 'by discipline'">
     <div class="input-group mt-3">
       <div class="input-group-prepend">
@@ -39,7 +34,8 @@
         <span class="input-group-text">Discipline</span>
         <select class="form-control" [(ngModel)]="selectedDiscipline">
           <option *ngFor="let discipline of listDisciplines" [ngValue]="discipline.id">
-            type:{{discipline.type}} name:{{discipline.name}} course:{{discipline.course}} semester:{{discipline.semester}} groupId: {{discipline.idGroup}}
+            type:{{discipline.type}} name:{{discipline.name}} course:{{discipline.course}}
+            semester:{{discipline.semester}} groupId: {{discipline.idGroup}}
           </option>
         </select>
       </div>
@@ -58,6 +54,74 @@
 
 
   </div>
+
+
+  <!--case faculty Search type selected-->
+
+  <div *ngIf="selectedSearchType == 'by faculty'">
+    <div class="input-group mt-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Search By</span>
+        <select class="form-control" [(ngModel)]="searchType2Layer">
+          <option *ngFor="let searchType of listSearch2LayerType" [ngValue]="searchType">
+            {{searchType}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="input-group mt-3" *ngIf="searchType2Layer === 'by group list'">
+      <div class="input-group-prepend">
+        <ng-select [items]="listGroups"
+                   bindLabel="name"
+                   placeholder="Select groups"
+                   appendTo="body"
+                   multiple="true"
+                   [(ngModel)]="selectedGroups" (change)="disciplineDropdownActualise()">
+        </ng-select>
+      </div>
+    </div>
+    <div class="input-group mt-3" *ngIf="searchType2Layer === 'by course'">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Course</span>
+        <input type="number"
+               class="form-control"
+               [(ngModel)]="selectedCourse">
+      </div>
+    </div>
+    <div class="input-group mt-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Faculty</span>
+        <select class="form-control" [(ngModel)]="selectedFaculty">
+          <option *ngFor="let faculty of listFaculties" [ngValue]="faculty.id">
+            {{faculty.name}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="input-group mt-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Semester</span>
+        <input type="number"
+               class="form-control"
+               [(ngModel)]="selectedSemester">
+      </div>
+    </div>
+
+    <div class="input-group mt-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Mark not less than</span>
+        <input type="number"
+               class="form-control"
+               [(ngModel)]="selectedMark">
+      </div>
+    </div>
+    <button class="options-table mt-2" (click)="onSubmit2()" *ngIf="(selectedFaculty!= -1 && selectedGroups.length!=0 && searchType2Layer === 'by group list') ||
+    (selectedFaculty!= -1 && searchType2Layer === 'by course')">
+      Search
+    </button>
+  </div>
+
+
 </div>
 
 <div class="container-md">

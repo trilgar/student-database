@@ -9,8 +9,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormBuilder, FormsModule} from '@angular/forms';
 import {CreateStudentComponent} from './components/create-student/create-student.component';
 import { StudentAdvancedSearchComponent } from './components/advanced-search/student-advanced-search.component';
-import {NgSelectModule} from "@ng-select/ng-select";
+import {NgSelectModule} from '@ng-select/ng-select';
 import { StudentFilterByMarkComponent } from './components/student-filter-by-mark/student-filter-by-mark.component';
+import { SemeterRangeComponent } from './components/semeter-range/semeter-range.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { StudentFilterByMarkComponent } from './components/student-filter-by-mar
     StudentsComponent,
     CreateStudentComponent,
     StudentAdvancedSearchComponent,
-    StudentFilterByMarkComponent
+    StudentFilterByMarkComponent,
+    SemeterRangeComponent
   ],
   imports: [
     BrowserModule,
