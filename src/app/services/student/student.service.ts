@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Student} from '../../models/Student';
 import {environment} from '../../../environments/environment';
-import {SearchDto} from '../../components/advanced-search/student-advanced-search.component';
+import {Interval, SearchDto} from '../../components/advanced-search/student-advanced-search.component';
 import {Group} from '../../components/create-student/create-student.component';
 
 @Injectable({
@@ -49,7 +49,7 @@ export class StudentService {
     return this.http.get<Student[]>(url);
   }
 
-  getByFacultyAndGroups(groups: Group[], facultyId: number, semester: number, mark: number): Observable<Student[]>{
+  getByFacultyAndGroups(groups: Group[], facultyId: number, semester: number, mark: number): Observable<Student[]> {
     let groupString = '';
     const groupIds = groups.map(group => group.id).map((grpId) => {
       groupString += grpId + ',';
@@ -61,8 +61,26 @@ export class StudentService {
     return this.http.get<Student[]>(url);
   }
 
-  getByFacultyAndCourse(course: number, facultyId: number, semester: number, mark: number): Observable<Student[]>{
+  getByFacultyAndCourse(course: number, facultyId: number, semester: number, mark: number): Observable<Student[]> {
     const url = `${environment.backend_url}/api/students/by_crs_mrk?course=${course}&idFaculty=${facultyId}&mark=${mark}&semester=${semester}`;
+    console.log('sending', url);
+    return this.http.get<Student[]>(url);
+  }
+
+  getByGroupsAndSemester(groups: Group[], semester: Interval): Observable<Student[]> {
+    let groupString = '';
+    const groupIds = groups.map(group => group.id).map((grpId) => {
+      groupString += grpId + ',';
+    });
+    groupString.substring(0, groupString.length - 1);
+
+    const url = `${environment.backend_url}/api/students/by_group_and_semester?groups=${groupString}&from=${semester.from}&to=${semester.to}`;
+    console.log('sending', url);
+    return this.http.get<Student[]>(url);
+  }
+
+  getByMarkAndSemester(mark: number, idDiscipline: number, semester: Interval): Observable<Student[]> {
+    const url = `${environment.backend_url}/api/students/by_mark_and_semester?mark=${mark}&idDiscipline=${idDiscipline}&from=${semester.from}&to=${semester.to}`;
     console.log('sending', url);
     return this.http.get<Student[]>(url);
   }

@@ -4,7 +4,10 @@ import {StudentsComponent} from './components/students/students.component';
 import {CreateStudentComponent} from './components/create-student/create-student.component';
 import {StudentAdvancedSearchComponent} from './components/advanced-search/student-advanced-search.component';
 import {StudentFilterByMarkComponent} from './components/student-filter-by-mark/student-filter-by-mark.component';
-import {SemeterRangeComponent} from './components/semeter-range/semeter-range.component';
+import {SemesterRangeComponent} from './components/semeter-range/semester-range.component';
+import {TeacherComponent} from "./components/teacher/teacher.component";
+import {CreateTeacherComponent} from "./components/create-teacher/create-teacher.component";
+import {TeacherAdvancedSearchComponent} from "./components/teacher-advanced-search/teacher-advanced-search.component";
 
 const routes: Routes = [
 
@@ -12,7 +15,10 @@ const routes: Routes = [
   {path: 'create-student', component: CreateStudentComponent},
   {path: 'students/advanced-search', component: StudentAdvancedSearchComponent},
   {path: 'students/search-by-mark', component: StudentFilterByMarkComponent},
-  {path: 'students/semester-range', component: SemeterRangeComponent}
+  {path: 'students/semester-range', component: SemesterRangeComponent},
+  {path: 'teachers', component: TeacherComponent},
+  {path: 'teachers/create', component: CreateTeacherComponent},
+  {path: 'teachers/advanced-search', component: TeacherAdvancedSearchComponent}
 
 ];
 

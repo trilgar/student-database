@@ -69,27 +69,27 @@ export class StudentAdvancedSearchComponent implements OnInit {
     this.selectedFilters.map((filterName) => {
       switch (filterName) {
         case 'select by gender': {
-          searchDto.filters.gender = this.gender;
+          searchDto.filters['gender'] = this.gender;
           break;
         }
         case 'select by age': {
-          searchDto.filters.age = new Interval(this.ageFrom, this.ageTo);
+          searchDto.filters['age'] = new Interval(this.ageFrom, this.ageTo);
           break;
         }
         case 'select by year': {
-          searchDto.filters.year =  new Interval(this.yearFrom, this.yearTo);
+          searchDto.filters['year'] = new Interval(this.yearFrom, this.yearTo);
           break;
         }
         case 'select by kids': {
-          searchDto.filters.kids =  null;
+          searchDto.filters['kids'] = null;
           break;
         }
         case 'select by stipendium': {
-          searchDto.filters.stipendium =  new Interval(this.stipendiumFrom, this.stipendiumTo);
+          searchDto.filters['stipendium'] = new Interval(this.stipendiumFrom, this.stipendiumTo);
           break;
         }
         case 'select by name': {
-          searchDto.filters.name =  this.name;
+          searchDto.filters['name'] = this.name;
         }
       }
     });

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SemeterRangeComponent } from './semeter-range.component';
+import { CreateTeacherComponent } from './create-teacher.component';
 
-describe('SemeterRangeComponent', () => {
-  let component: SemeterRangeComponent;
-  let fixture: ComponentFixture<SemeterRangeComponent>;
+describe('CreateTeacherComponent', () => {
+  let component: CreateTeacherComponent;
+  let fixture: ComponentFixture<CreateTeacherComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SemeterRangeComponent ]
+      declarations: [ CreateTeacherComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SemeterRangeComponent);
+    fixture = TestBed.createComponent(CreateTeacherComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

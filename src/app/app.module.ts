@@ -11,7 +11,10 @@ import {CreateStudentComponent} from './components/create-student/create-student
 import { StudentAdvancedSearchComponent } from './components/advanced-search/student-advanced-search.component';
 import {NgSelectModule} from '@ng-select/ng-select';
 import { StudentFilterByMarkComponent } from './components/student-filter-by-mark/student-filter-by-mark.component';
-import { SemeterRangeComponent } from './components/semeter-range/semeter-range.component';
+import { SemesterRangeComponent } from './components/semeter-range/semester-range.component';
+import { TeacherComponent } from './components/teacher/teacher.component';
+import { CreateTeacherComponent } from './components/create-teacher/create-teacher.component';
+import { TeacherAdvancedSearchComponent } from './components/teacher-advanced-search/teacher-advanced-search.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { SemeterRangeComponent } from './components/semeter-range/semeter-range.
     CreateStudentComponent,
     StudentAdvancedSearchComponent,
     StudentFilterByMarkComponent,
-    SemeterRangeComponent
+    SemesterRangeComponent,
+    TeacherComponent,
+    CreateTeacherComponent,
+    TeacherAdvancedSearchComponent
   ],
   imports: [
     BrowserModule,

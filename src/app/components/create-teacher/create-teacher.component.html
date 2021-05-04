@@ -1,0 +1,115 @@
+<div class="container-md">
+  <div class="row">
+    <h3 class="display-4 black">Create new Teacher</h3>
+    <button class="options mt-4 ml-5" (click)="goBack()">
+      Back to Teachers
+    </button>
+  </div>
+
+  <div class="alert alert-warning col-md-10 mt-5 error-message" role="alert" *ngIf="this.warningFlag"
+       (click)="warningFlag = false">
+    {{this.warningMessage}}
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Name</span>
+      <input required maxlength="100" type="text"
+             class="form-control"
+             [(ngModel)]="newTeacher.name">
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Faculty</span>
+      <select class="form-control" [(ngModel)]="newTeacher.facultyId">
+        <option *ngFor="let faculty of facultyList" [ngValue]="faculty.id">
+          {{faculty.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Category</span>
+      <select class="form-control" [(ngModel)]="newTeacher.category">
+        <option *ngFor="let category of categoryList" [ngValue]="category">
+          {{category}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Year</span>
+      <input type="number"
+             class="form-control"
+             [(ngModel)]="newTeacher.year">
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Wage</span>
+      <input type="number"
+             class="form-control"
+             [(ngModel)]="newTeacher.wage">
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Is Aspirant</span>
+      <select class="form-control" [(ngModel)]="newTeacher.asp">
+        <option *ngFor="let aspStatus of aspStatuses" [ngValue]="aspStatus">
+          {{aspStatus}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Gender</span>
+      <select class="form-control" [(ngModel)]="newTeacher.gender">
+        <option *ngFor="let gender of genderList" [ngValue]="gender">
+          {{gender}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Age</span>
+      <input type="number"
+             class="form-control"
+             [(ngModel)]="newTeacher.age">
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Kids</span>
+      <input type="number"
+             class="form-control"
+             [(ngModel)]="newTeacher.kids">
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Cathedra</span>
+      <select class="form-control" [(ngModel)]="newTeacher.idCathedra">
+        <option *ngFor="let cathedra of cathedraList" [ngValue]="cathedra.id">
+          {{cathedra.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="col-lg-4 m-0 p-0">
+      <button class="options-table" (click)="createTeacher()">
+        Create
+      </button>
+    </div>
+  </div>
+</div>
+

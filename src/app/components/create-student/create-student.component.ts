@@ -6,6 +6,7 @@ import {GroupService} from '../../services/group/group.service';
 import {take} from 'rxjs/operators';
 import {Gender, Student} from '../../models/Student';
 import {Faculty, FacultyService} from '../../services/faculty/faculty.service';
+import {AspStatus} from "../../services/teacher/teacher.service";
 
 @Component({
   selector: 'app-create-student',
@@ -18,6 +19,7 @@ export class CreateStudentComponent implements OnInit {
   newStudent: Student;
   genderList = [Gender.MALE, Gender.FEMALE];
   warningMessage: string;
+
 
   constructor(private router: Router, private route: ActivatedRoute,
               private formBuilder: FormBuilder, private stService: StudentService,
