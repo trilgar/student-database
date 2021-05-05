@@ -27,6 +27,16 @@ export class DisciplineService {
     const url = `${environment.backend_url}/api/disciplines/by_groups?groups=${groupString}`;
     return this.http.get<Discipline[]>(url);
   }
+
+  getByCourses(courses: number[]): Observable<Discipline[]> {
+    let courseString = '';
+    courses.map((crs) => {
+      courseString += crs + ',';
+    });
+    courseString.substring(0, courseString.length - 1);
+    const url = `${environment.backend_url}/api/disciplines/by_courses?courses=${courseString}`;
+    return this.http.get<Discipline[]>(url);
+  }
 }
 
 export class Discipline {

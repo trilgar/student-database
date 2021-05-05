@@ -59,7 +59,11 @@ export class TeacherComponent implements OnInit {
     }
   }
 
-  advancedSearch():void {
+  advancedSearch(): void {
     this.router.navigate(['teachers/advanced-search'])
+  }
+
+  byDiscSearch(): void {
+    this.router.navigate(['teachers/by-discipline']);
   }
 }

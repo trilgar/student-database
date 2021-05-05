@@ -15,6 +15,7 @@ import { SemesterRangeComponent } from './components/semeter-range/semester-rang
 import { TeacherComponent } from './components/teacher/teacher.component';
 import { CreateTeacherComponent } from './components/create-teacher/create-teacher.component';
 import { TeacherAdvancedSearchComponent } from './components/teacher-advanced-search/teacher-advanced-search.component';
+import { TeacherByDisciplineComponent } from './components/teacher-by-discipline/teacher-by-discipline.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TeacherAdvancedSearchComponent } from './components/teacher-advanced-se
     SemesterRangeComponent,
     TeacherComponent,
     CreateTeacherComponent,
-    TeacherAdvancedSearchComponent
+    TeacherAdvancedSearchComponent,
+    TeacherByDisciplineComponent
   ],
   imports: [
     BrowserModule,

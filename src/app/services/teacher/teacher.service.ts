@@ -46,7 +46,7 @@ export class TeacherService {
   }
 
   getByCourse(disciplineName: string, course: number, idFaculty: number): Observable<Teacher[]> {
-    const url = `${environment.backend_url}/api/teachers/by_group?dName=${disciplineName}&course=${course}&idFaculty=${idFaculty}`;
+    const url = `${environment.backend_url}/api/teachers/by_course?dName=${disciplineName}&course=${course}&idFaculty=${idFaculty}`;
     return this.http.get<Teacher[]>(url);
   }
 
