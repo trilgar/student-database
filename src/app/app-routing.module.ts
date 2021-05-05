@@ -9,6 +9,8 @@ import {TeacherComponent} from "./components/teacher/teacher.component";
 import {CreateTeacherComponent} from "./components/create-teacher/create-teacher.component";
 import {TeacherAdvancedSearchComponent} from "./components/teacher-advanced-search/teacher-advanced-search.component";
 import {TeacherByDisciplineComponent} from "./components/teacher-by-discipline/teacher-by-discipline.component";
+import {TeacherByTypeComponent} from "./components/teacher-by-type/teacher-by-type.component";
+import {TeacherByExamComponent} from "./components/teacher-by-exam/teacher-by-exam.component";
 
 const routes: Routes = [
 
@@ -20,7 +22,9 @@ const routes: Routes = [
   {path: 'teachers', component: TeacherComponent},
   {path: 'teachers/create', component: CreateTeacherComponent},
   {path: 'teachers/advanced-search', component: TeacherAdvancedSearchComponent},
-  {path: 'teachers/by-discipline', component: TeacherByDisciplineComponent}
+  {path: 'teachers/by-discipline', component: TeacherByDisciplineComponent},
+  {path: 'teachers/by-type', component: TeacherByTypeComponent},
+  {path: 'teachers/by-exam', component: TeacherByExamComponent}
 
 ];
 

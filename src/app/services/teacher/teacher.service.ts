@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Gender} from '../../models/Student';
 import {environment} from '../../../environments/environment';
 import {Interval, SearchDto} from '../../components/advanced-search/student-advanced-search.component';
+import {Group} from "../../components/create-student/create-student.component";
 
 
 @Injectable({
@@ -70,8 +71,13 @@ export class TeacherService {
     return this.http.get<Teacher[]>(url);
   }
 
-  getByExams(idGroup: number, disciplineName: string, semester: number): Observable<Teacher[]> {
-    const url = `${environment.backend_url}/api/teachers/by_exams?idGroup=${idGroup}&dName=${disciplineName}&semester=${semester}`;
+  getByExams(groups: Group[], disciplineName: string, semester: number): Observable<Teacher[]> {
+    let groupString = '';
+    const groupIds = groups.map(group => group.id).map((grpId) => {
+      groupString += grpId + ',';
+    });
+    groupString.substring(0, groupString.length - 1);
+    const url = `${environment.backend_url}/api/teachers/by_exams?groups=${groupString}&dName=${disciplineName}&semester=${semester}`;
     return this.http.get<Teacher[]>(url);
   }
 

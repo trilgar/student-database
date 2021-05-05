@@ -66,4 +66,12 @@ export class TeacherComponent implements OnInit {
   byDiscSearch(): void {
     this.router.navigate(['teachers/by-discipline']);
   }
+
+  byDiscTypeSearch(): void {
+    this.router.navigate(['teachers/by-type']);
+  }
+
+  byExamSearch(): void {
+    this.router.navigate(['teachers/by-exam']);
+  }
 }
