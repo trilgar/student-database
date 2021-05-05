@@ -18,6 +18,7 @@ import { TeacherAdvancedSearchComponent } from './components/teacher-advanced-se
 import { TeacherByDisciplineComponent } from './components/teacher-by-discipline/teacher-by-discipline.component';
 import { TeacherByTypeComponent } from './components/teacher-by-type/teacher-by-type.component';
 import { TeacherByExamComponent } from './components/teacher-by-exam/teacher-by-exam.component';
+import { TeachersHeadsComponent } from './components/teachers-heads/teachers-heads.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { TeacherByExamComponent } from './components/teacher-by-exam/teacher-by-
     TeacherAdvancedSearchComponent,
     TeacherByDisciplineComponent,
     TeacherByTypeComponent,
-    TeacherByExamComponent
+    TeacherByExamComponent,
+    TeachersHeadsComponent
   ],
   imports: [
     BrowserModule,

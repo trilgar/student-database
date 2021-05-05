@@ -74,4 +74,8 @@ export class TeacherComponent implements OnInit {
   byExamSearch(): void {
     this.router.navigate(['teachers/by-exam']);
   }
+
+  headsSearch(): void {
+    this.router.navigate(['teachers/heads']);
+  }
 }

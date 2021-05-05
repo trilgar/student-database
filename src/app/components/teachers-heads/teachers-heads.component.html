@@ -1,0 +1,113 @@
+<div class="container-md">
+  <div class="row">
+    <h3 class="display-4 black">Search for heads of graduate works</h3>
+    <button class="options mt-4 ml-5" (click)="goBack()">
+      Back to Teachers
+    </button>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Select Search Type</span>
+      <select class="form-control" [(ngModel)]="selectedSearchType">
+        <option *ngFor="let searchType of searchTypeList" [ngValue]="searchType">
+          {{searchType}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3" *ngIf="selectedSearchType === 'by cathedra'">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Cathedra</span>
+      <select class="form-control" [(ngModel)]="selectedCathedra">
+        <option *ngFor="let cathedra of cathedraList" [ngValue]="cathedra">
+          {{cathedra.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3" *ngIf="selectedSearchType === 'by faculty'">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Faculty</span>
+      <select class="form-control" [(ngModel)]="selectedFaculty">
+        <option *ngFor="let faculty of facultyList" [ngValue]="faculty">
+          {{faculty.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <ng-select [items]="teacherTypeList"
+                 bindLabel="filter"
+                 placeholder="Select Teacher Categories"
+                 appendTo="body"
+                 multiple="true"
+                 [(ngModel)]="selectedTeacherTypes">
+      </ng-select>
+    </div>
+  </div>
+
+  <!--search button-->
+  <div class="input-group mt-3">
+    <div class="col-lg-4 m-0 p-0">
+      <button class="options-table" (click)="onSubmit()" *ngIf="(selectedCathedra!=null && selectedSearchType === 'by cathedra') ||
+       (selectedFaculty!=null && selectedSearchType === 'by faculty')">
+        Search
+      </button>
+    </div>
+  </div>
+</div>
+<!--search results-->
+<div class="container-md">
+  <div *ngIf="teachers?.length == 0" class="alert alert-warning col-md-10 mt-5" role="alert">
+    No students found.
+  </div>
+  <div class="alert alert-warning col-md-10 mt-5 error-message" role="alert" *ngIf="this.warningFlag" (click)="warningFlag = false" >
+    {{this.warningMessage}}
+  </div>
+  <div class="mt-5 row" *ngIf="teachers.length !== 0">
+    <div class="custom-table black">
+      <div class="row thead">
+        <div class="col-1">ID</div>
+        <div class="col-3">Name</div>
+        <div class="col-1">ID Faculty</div>
+        <div class="col-2">ID Cathedra</div>
+        <div class="col-4">Options</div>
+
+      </div>
+
+      <div class="mt-5 stripped">
+        <div *ngFor="let teacher of teachers; index as i">
+          <div class="row">
+            <div class="col-1">{{teacher.id}}</div>
+            <div class="col-3">{{teacher.name}}</div>
+            <div class="col-1">{{teacher.facultyId}}</div>
+            <div class="col-2">{{teacher.idCathedra}}</div>
+            <div class="col-4 pt-2">
+              <button class="options-table" (click)="deleteTeacher(teacher.id)">
+                Delete
+              </button>
+              <button class="options-table ml-1" (click)="this.showDetails(teacher.id);">
+                Details
+              </button>
+            </div>
+            <div class="row mt-1" *ngIf="teacher.id == this.detailsId">
+              <div class="col-3">Wage: {{teacher.wage}}</div>
+              <div class="col-3">Gender: {{teacher.gender}}</div>
+              <div class="col-3">Age: {{teacher.age}}</div>
+              <div class="col-3">Kids: {{teacher.kids}}</div>
+              <div class="col-3">Is Aspirant: {{teacher.asp}}</div>
+              <div class="col-3">Category: {{teacher.category}}</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
