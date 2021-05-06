@@ -19,6 +19,12 @@ import { TeacherByDisciplineComponent } from './components/teacher-by-discipline
 import { TeacherByTypeComponent } from './components/teacher-by-type/teacher-by-type.component';
 import { TeacherByExamComponent } from './components/teacher-by-exam/teacher-by-exam.component';
 import { TeachersHeadsComponent } from './components/teachers-heads/teachers-heads.component';
+import { CathedraComponent } from './components/cathedra/cathedra.component';
+import { CreateCathedraComponent } from './components/create-cathedra/create-cathedra.component';
+import { CathedraAdvancedSearchComponent } from './components/cathedra-advanced-search/cathedra-advanced-search.component';
+import { ScienceWorkComponent } from './components/science-work/science-work.component';
+import { CreateScienceWorkComponent } from './components/create-science-work/create-science-work.component';
+import { ScienceWorkAdvancedSearchComponent } from './components/science-work-advanced-search/science-work-advanced-search.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +41,13 @@ import { TeachersHeadsComponent } from './components/teachers-heads/teachers-hea
     TeacherByDisciplineComponent,
     TeacherByTypeComponent,
     TeacherByExamComponent,
-    TeachersHeadsComponent
+    TeachersHeadsComponent,
+    CathedraComponent,
+    CreateCathedraComponent,
+    CathedraAdvancedSearchComponent,
+    ScienceWorkComponent,
+    CreateScienceWorkComponent,
+    ScienceWorkAdvancedSearchComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,111 @@
+<div class="container-md">
+  <div class="row">
+    <h3 class="display-4 black">Advanced Search for Cathedras</h3>
+    <button class="options mt-4 ml-5" (click)="goBack()">
+      Back to cathedras
+    </button>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Select Search Type</span>
+      <select class="form-control" [(ngModel)]="selectedSearchType">
+        <option *ngFor="let searchType of searchTypeList" [ngValue]="searchType">
+          {{searchType}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+
+  <!--if group search type selected-->
+  <div class="input-group mt-3" *ngIf="selectedSearchType === 'Group'">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Group</span>
+      <select class="form-control" [(ngModel)]="selectedGroup">
+        <option *ngFor="let group of groupList" [ngValue]="group">
+          {{group.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <!--if course search type selected-->
+  <div class="input-group mt-3" *ngIf="selectedSearchType === 'Course'">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Course</span>
+      <select class="form-control" [(ngModel)]="selectedCourse">
+        <option *ngFor="let course of courseList" [ngValue]="course">
+          {{course}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Faculty</span>
+      <select class="form-control" [(ngModel)]="selectedFaculty">
+        <option *ngFor="let faculty of facultyList" [ngValue]="faculty">
+          {{faculty.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Semester</span>
+      <input type="number"
+             class="form-control"
+             [(ngModel)]="semester.from">
+      <input type="number"
+             class="form-control"
+             [(ngModel)]="semester.to">
+    </div>
+
+    <div class="input-group mt-3">
+      <div class="col-lg-4 m-0 p-0">
+        <button class="options-table" (click)="onSubmit()" *ngIf="selectedFaculty!=null &&
+        ((selectedGroup!=null && selectedSearchType === 'Group')||(selectedCourse!=null && selectedSearchType ==='Course'))">
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!--search results-->
+<div class="container-md">
+<div *ngIf="cathedras?.length == 0" class="alert alert-warning col-md-10 mt-5" role="alert">
+  No cathedras found.
+</div>
+<div class="alert alert-warning col-md-10 mt-5 error-message" role="alert" *ngIf="this.warningFlag" (click)="warningFlag = false" >
+  {{this.warningMessage}}
+</div>
+<div class="mt-5 row" *ngIf="cathedras.length !== 0">
+  <div class="custom-table black">
+    <div class="row thead">
+      <div class="col-1">ID</div>
+      <div class="col-3">Name</div>
+      <div class="col-4">Options</div>
+
+    </div>
+
+    <div class="mt-5 stripped">
+      <div *ngFor="let cathedra of cathedras; index as i">
+        <div class="row">
+          <div class="col-1">{{cathedra.id}}</div>
+          <div class="col-3">{{cathedra.name}}</div>
+          <div class="col-4 pt-2">
+            <button class="options-table" (click)="deleteCathedra(cathedra.id)">
+              Delete
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>

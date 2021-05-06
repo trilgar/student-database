@@ -12,6 +12,9 @@ import {TeacherByDisciplineComponent} from "./components/teacher-by-discipline/t
 import {TeacherByTypeComponent} from "./components/teacher-by-type/teacher-by-type.component";
 import {TeacherByExamComponent} from "./components/teacher-by-exam/teacher-by-exam.component";
 import {TeachersHeadsComponent} from "./components/teachers-heads/teachers-heads.component";
+import {CathedraAdvancedSearchComponent} from "./components/cathedra-advanced-search/cathedra-advanced-search.component";
+import {CreateCathedraComponent} from "./components/create-cathedra/create-cathedra.component";
+import {CathedraComponent} from "./components/cathedra/cathedra.component";
 
 const routes: Routes = [
 
@@ -26,7 +29,10 @@ const routes: Routes = [
   {path: 'teachers/by-discipline', component: TeacherByDisciplineComponent},
   {path: 'teachers/by-type', component: TeacherByTypeComponent},
   {path: 'teachers/by-exam', component: TeacherByExamComponent},
-  {path: 'teachers/heads', component: TeachersHeadsComponent}
+  {path: 'teachers/heads', component: TeachersHeadsComponent},
+  {path: 'cathedras', component: CathedraComponent},
+  {path: 'cathedras/advanced-search', component: CathedraAdvancedSearchComponent},
+  {path: 'cathedras/create-new', component: CreateCathedraComponent}
 
 ];
 
