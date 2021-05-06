@@ -62,50 +62,51 @@
              class="form-control"
              [(ngModel)]="semester.to">
     </div>
-
-    <div class="input-group mt-3">
-      <div class="col-lg-4 m-0 p-0">
-        <button class="options-table" (click)="onSubmit()" *ngIf="selectedFaculty!=null &&
+  </div>
+  <div class="input-group mt-3">
+    <div class="col-lg-4 m-0 p-0">
+      <button class="options-table" (click)="onSubmit()" *ngIf="selectedFaculty!=null &&
         ((selectedGroup!=null && selectedSearchType === 'Group')||(selectedCourse!=null && selectedSearchType ==='Course'))">
-          Search
-        </button>
-      </div>
+        Search
+      </button>
     </div>
   </div>
+
 
 </div>
 
 <!--search results-->
 <div class="container-md">
-<div *ngIf="cathedras?.length == 0" class="alert alert-warning col-md-10 mt-5" role="alert">
-  No cathedras found.
-</div>
-<div class="alert alert-warning col-md-10 mt-5 error-message" role="alert" *ngIf="this.warningFlag" (click)="warningFlag = false" >
-  {{this.warningMessage}}
-</div>
-<div class="mt-5 row" *ngIf="cathedras.length !== 0">
-  <div class="custom-table black">
-    <div class="row thead">
-      <div class="col-1">ID</div>
-      <div class="col-3">Name</div>
-      <div class="col-4">Options</div>
+  <div *ngIf="cathedras?.length == 0" class="alert alert-warning col-md-10 mt-5" role="alert">
+    No cathedras found.
+  </div>
+  <div class="alert alert-warning col-md-10 mt-5 error-message" role="alert" *ngIf="this.warningFlag"
+       (click)="warningFlag = false">
+    {{this.warningMessage}}
+  </div>
+  <div class="mt-5 row" *ngIf="cathedras.length !== 0">
+    <div class="custom-table black">
+      <div class="row thead">
+        <div class="col-1">ID</div>
+        <div class="col-3">Name</div>
+        <div class="col-4">Options</div>
 
-    </div>
+      </div>
 
-    <div class="mt-5 stripped">
-      <div *ngFor="let cathedra of cathedras; index as i">
-        <div class="row">
-          <div class="col-1">{{cathedra.id}}</div>
-          <div class="col-3">{{cathedra.name}}</div>
-          <div class="col-4 pt-2">
-            <button class="options-table" (click)="deleteCathedra(cathedra.id)">
-              Delete
-            </button>
+      <div class="mt-5 stripped">
+        <div *ngFor="let cathedra of cathedras; index as i">
+          <div class="row">
+            <div class="col-1">{{cathedra.id}}</div>
+            <div class="col-3">{{cathedra.name}}</div>
+            <div class="col-4 pt-2">
+              <button class="options-table" (click)="deleteCathedra(cathedra.id)">
+                Delete
+              </button>
+            </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>

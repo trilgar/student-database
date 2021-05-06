@@ -1,1 +1,68 @@
-<p>create-science-work works!</p>
+<div class="container-md">
+  <div class="row">
+    <h3 class="display-4 black">Create new Science Work</h3>
+    <button class="options mt-4 ml-5" (click)="goBack()">
+      Back to Science Works
+    </button>
+  </div>
+
+  <div class="alert alert-warning col-md-10 mt-5 error-message" role="alert" *ngIf="this.warningFlag"
+       (click)="warningFlag = false">
+    {{this.warningMessage}}
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Select Science Work Type</span>
+      <select class="form-control" [(ngModel)]="selectedType" (change)="this.verifySwType()">
+        <option *ngFor="let type of typeList" [ngValue]="type">
+          {{type}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Select Teacher</span>
+      <select class="form-control" [(ngModel)]="selectedTeacher" (change)="this.verifySwType()">
+        <option *ngFor="let teacher of teacherList" [ngValue]="teacher">
+          {{teacher.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Year</span>
+      <input type="number"
+             class="form-control"
+             [(ngModel)]="selectedYear">
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Name</span>
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="selectedName">
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Description</span>
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="selectedDescription">
+    </div>
+  </div>
+
+  <div class="input-group mt-3" *ngIf="selectedType!=null && selectedTeacher!=null && selectedYear!=null">
+    <div class="col-lg-4 m-0 p-0">
+      <button class="options-table" (click)="onSubmit()">
+        Create
+      </button>
+    </div>
+  </div>
+</div>

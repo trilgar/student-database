@@ -1,1 +1,88 @@
-<p>science-work-advanced-search works!</p>
+<div class="container-md">
+  <div class="row">
+    <h3 class="display-4 black">Advanced Search for Science Works</h3>
+    <button class="options mt-4 ml-5" (click)="goBack()">
+      Back to science works
+    </button>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Cathedra</span>
+      <select class="form-control" [(ngModel)]="selectedCathedra">
+        <option *ngFor="let cathedra of cathedraList" [ngValue]="cathedra">
+          {{cathedra.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Faculty</span>
+      <select class="form-control" [(ngModel)]="selectedFaculty">
+        <option *ngFor="let faculty of facultyList" [ngValue]="faculty">
+          {{faculty.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="col-lg-4 m-0 p-0">
+      <button class="options-table" (click)="onSubmit()" *ngIf="selectedCathedra!=null && selectedFaculty!= null">
+        Search
+      </button>
+    </div>
+  </div>
+</div>
+
+<!--search results-->
+<div class="container-md">
+  <div class="row">
+    <h1 class="display-4 black">Science Works</h1>
+  </div>
+  <div *ngIf="swList?.length == 0" class="alert alert-warning col-md-10 mt-5" role="alert">
+    No students found.
+  </div>
+  <div class="alert alert-warning col-md-10 mt-5 error-message" role="alert" *ngIf="this.warningFlag" (click)="warningFlag = false" >
+    {{this.warningMessage}}
+  </div>
+  <div class="mt-5 row" *ngIf="swList.length !== 0">
+    <div class="custom-table black">
+      <div class="row thead">
+        <div class="col-1">ID</div>
+        <div class="col-3">Name</div>
+        <div class="col-3">Type</div>
+        <div class="col-1">ID Teacher</div>
+        <div class="col-4">Options</div>
+
+      </div>
+
+      <div class="mt-5 stripped">
+        <div *ngFor="let sw of swList; index as i">
+          <div class="row">
+            <div class="col-1">{{sw.id}}</div>
+            <div class="col-3">{{sw.name}}</div>
+            <div class="col-3">{{sw.type}}</div>
+            <div class="col-1">{{sw.idTeacher}}</div>
+            <div class="col-4 pt-2">
+              <button class="options-table" (click)="delete(sw.id)">
+                Delete
+              </button>
+              <button class="options-table ml-1" (click)="this.showDetails(sw.id);">
+                Details
+              </button>
+            </div>
+            <div class="row mt-1" *ngIf="sw.id == this.detailsId">
+              <div class="col-3">Year: {{sw.year}}</div>
+              <div class="col-10">Description: {{sw.description}}</div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
