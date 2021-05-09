@@ -1,0 +1,70 @@
+<div class="container-md">
+  <div class="row">
+    <h3 class="display-4 black">Create new Graduate Work</h3>
+    <button class="options mt-4 ml-5" (click)="goBack()">
+      Back to Graduate Works
+    </button>
+  </div>
+
+  <div class="alert alert-warning col-md-10 mt-5 error-message" role="alert" *ngIf="this.warningFlag"
+       (click)="warningFlag = false">
+    {{this.warningMessage}}
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Student</span>
+      <select class="form-control" [(ngModel)]="selectedStudent">
+        <option *ngFor="let student of studentList" [ngValue]="student">
+          {{student.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Teacher</span>
+      <select class="form-control" [(ngModel)]="selectedTeacher">
+        <option *ngFor="let teacher of teacherList" [ngValue]="teacher">
+          {{teacher.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Year</span>
+      <input type="number"
+             class="form-control"
+             [(ngModel)]="selectedYear">
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Name</span>
+      <input required maxlength="20" type="text"
+             class="form-control"
+             [(ngModel)]="selectedName">
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Description</span>
+      <input required maxlength="20" type="text"
+             class="form-control"
+             [(ngModel)]="selectedDescription">
+    </div>
+  </div>
+
+  <div class="input-group mt-3" *ngIf="selectedStudent!=null && selectedTeacher!=null">
+    <div class="col-lg-4 m-0 p-0">
+      <button class="options-table" (click)="onSubmit()">
+        Create
+      </button>
+    </div>
+  </div>
+
+</div>

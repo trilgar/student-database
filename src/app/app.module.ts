@@ -25,6 +25,9 @@ import { CathedraAdvancedSearchComponent } from './components/cathedra-advanced-
 import { ScienceWorkComponent } from './components/science-work/science-work.component';
 import { CreateScienceWorkComponent } from './components/create-science-work/create-science-work.component';
 import { ScienceWorkAdvancedSearchComponent } from './components/science-work-advanced-search/science-work-advanced-search.component';
+import { GraduateWorkComponent } from './components/graduate-work/graduate-work.component';
+import { CreateGraduateWorkComponent } from './components/create-graduate-work/create-graduate-work.component';
+import { GwAdvancedSearchComponent } from './components/gw-advanced-search/gw-advanced-search.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,10 @@ import { ScienceWorkAdvancedSearchComponent } from './components/science-work-ad
     CathedraAdvancedSearchComponent,
     ScienceWorkComponent,
     CreateScienceWorkComponent,
-    ScienceWorkAdvancedSearchComponent
+    ScienceWorkAdvancedSearchComponent,
+    GraduateWorkComponent,
+    CreateGraduateWorkComponent,
+    GwAdvancedSearchComponent
   ],
   imports: [
     BrowserModule,

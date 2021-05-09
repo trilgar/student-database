@@ -18,6 +18,9 @@ import {CathedraComponent} from "./components/cathedra/cathedra.component";
 import {ScienceWorkComponent} from "./components/science-work/science-work.component";
 import {CreateScienceWorkComponent} from "./components/create-science-work/create-science-work.component";
 import {ScienceWorkAdvancedSearchComponent} from "./components/science-work-advanced-search/science-work-advanced-search.component";
+import {GraduateWorkComponent} from "./components/graduate-work/graduate-work.component";
+import {CreateGraduateWorkComponent} from "./components/create-graduate-work/create-graduate-work.component";
+import {GwAdvancedSearchComponent} from "./components/gw-advanced-search/gw-advanced-search.component";
 
 const routes: Routes = [
 
@@ -39,6 +42,9 @@ const routes: Routes = [
   {path: 'science-works', component: ScienceWorkComponent},
   {path: 'science-works/create-new', component: CreateScienceWorkComponent},
   {path: 'science-works/advanced-search', component: ScienceWorkAdvancedSearchComponent},
+  {path: 'graduate-works', component: GraduateWorkComponent},
+  {path: 'graduate-works/advanced-search', component: GwAdvancedSearchComponent},
+  {path: 'graduate-works/create', component: CreateGraduateWorkComponent},
 
 ];
 

@@ -1,0 +1,84 @@
+<div class="container-md">
+  <div class="row">
+    <h3 class="display-4 black">Advanced Search for Graduate Works</h3>
+    <button class="options mt-4 ml-5" (click)="goBack()">
+      Back to Students
+    </button>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Select Search Type</span>
+      <select class="form-control" [(ngModel)]="selectedSearchType">
+        <option *ngFor="let searchType of searchTypeList" [ngValue]="searchType">
+          {{searchType}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+
+  <div class="input-group mt-3" *ngIf="selectedSearchType === 'by teacher'">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Select Teacher</span>
+      <select class="form-control" [(ngModel)]="selectedTeacher">
+        <option *ngFor="let teacher of teacherList" [ngValue]="teacher">
+          {{teacher.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3" *ngIf="selectedSearchType === 'by cathedra'">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Select Cathedra</span>
+      <select class="form-control" [(ngModel)]="selectedCathedra">
+        <option *ngFor="let cathedra of cathedraList" [ngValue]="cathedra">
+          {{cathedra.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3" *ngIf="(selectedTeacher!=null && selectedSearchType === 'by teacher')|| (selectedCathedra!=null && selectedSearchType === 'by cathedra')">
+    <div class="col-lg-4 m-0 p-0">
+      <button class="options-table" (click)="onSubmit()">
+        Search
+      </button>
+    </div>
+  </div>
+</div>
+
+<!--search results-->
+<div class="container-md">
+  <div *ngIf="cgwList?.length == 0" class="alert alert-warning col-md-10 mt-5" role="alert">
+    No graduate works found.
+  </div>
+  <div class="alert alert-warning col-md-10 mt-5 error-message" role="alert" *ngIf="this.warningFlag"
+       (click)="warningFlag = false">
+    {{this.warningMessage}}
+  </div>
+
+  <div class="mt-5 row" *ngIf="cgwList.length !== 0">
+    <div class="custom-table black">
+      <div class="row thead">
+        <div class="col-1">ID Student</div>
+        <div class="col-5">Student Name</div>
+        <div class="col-5">Graduate Work Name</div>
+      </div>
+
+      <div class="mt-5 stripped">
+        <div *ngFor="let cgw of cgwList; index as i">
+          <div class="row">
+            <div class="col-1">{{cgw.idStudent}}</div>
+            <div class="col-5">{{cgw.studentName}}</div>
+            <div class="col-5">{{cgw.graduateWorkName}}</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
