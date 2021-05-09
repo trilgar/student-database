@@ -17,4 +17,14 @@ export class GroupService {
     console.log('Sending request to:', url);
     return this.http.get<Group[]>(url);
   }
+
+  create(group: Group): Observable<Group> {
+    const url = `${environment.backend_url}/api/groups`;
+    return this.http.post<Group>(url, group);
+  }
+
+  delete(id: number): Observable<any> {
+    const url = `${environment.backend_url}/api/groups?id=${id}`;
+    return this.http.delete(url);
+  }
 }

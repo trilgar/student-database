@@ -43,7 +43,7 @@
     <div class="input-group mt-3" *ngIf="selectedGroups.length!=0">
       <div class="input-group-prepend">
         <span class="input-group-text">Mark</span>
-        <input type="number"
+        <input min="0" max="5" type="number"
                class="form-control"
                [(ngModel)]="selectedMark">
       </div>
@@ -112,7 +112,8 @@
         <span class="input-group-text">Mark not less than</span>
         <input type="number"
                class="form-control"
-               [(ngModel)]="selectedMark">
+               [(ngModel)]="selectedMark"
+               min="0" max="5">
       </div>
     </div>
     <button class="options-table mt-2" (click)="onSubmit2()" *ngIf="(selectedFaculty!= -1 && selectedGroups.length!=0 && searchType2Layer === 'by group list') ||

@@ -1,0 +1,70 @@
+<div class="container-md">
+  <div class="row">
+    <h1 class="display-4 black">Exams</h1>
+  </div>
+  <div>
+    <div class="row mt-5">
+      <div class="search-config">
+
+        <input #myInput placeholder="Search for an exams ..."
+               class="au-input input-long mt-1" type="text"
+               (keyup.enter)="getByDescription(myInput.value)"/>
+
+        <button class="options ml-1 mt-1" (click)="getByDescription(myInput.value)">
+          Search
+        </button>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <button class="options ml-1 mt-1" (click)="this.create()">
+        Create New
+      </button>
+    </div>
+  </div>
+  <div *ngIf="exams?.length == 0" class="alert alert-warning col-md-10 mt-5" role="alert">
+    No students found.
+  </div>
+  <div class="alert alert-warning col-md-10 mt-5 error-message" role="alert" *ngIf="this.warningFlag"
+       (click)="warningFlag = false">
+    {{this.warningMessage}}
+  </div>
+  <div class="mt-5 row" *ngIf="exams.length !== 0">
+    <div class="custom-table black">
+      <div class="row thead">
+        <div class="col-1">ID</div>
+        <div class="col-3">Description</div>
+        <div class="col-1">ID Discipline</div>
+        <div class="col-2">ID Student</div>
+        <div class="col-4">Options</div>
+
+      </div>
+
+      <div class="mt-5 stripped">
+        <div *ngFor="let exam of exams; index as i">
+          <div class="row">
+            <div class="col-1">{{exam.id}}</div>
+            <div class="col-3">{{exam.description}}</div>
+            <div class="col-1">{{exam.idDiscipline}}</div>
+            <div class="col-2">{{exam.idStudent}}</div>
+            <div class="col-4 pt-2">
+              <button class="options-table" (click)="delete(exam.id)">
+                Delete
+              </button>
+              <button class="options-table ml-1" (click)="this.showDetails(exam.id);">
+                Details
+              </button>
+            </div>
+            <div class="row mt-1" *ngIf="exam.id == this.detailsId">
+              <div class="col-5">Type: {{exam.type}}</div>
+              <div class="col-5">Mark: {{exam.mark}}</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

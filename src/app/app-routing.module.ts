@@ -24,6 +24,12 @@ import {GwAdvancedSearchComponent} from "./components/gw-advanced-search/gw-adva
 import {DisciplineLoadComponent} from "./components/discipline-load/discipline-load.component";
 import {DisciplineComponent} from "./components/discipline/discipline.component";
 import {CreateDisciplineComponent} from "./components/create-discipline/create-discipline.component";
+import {ExamComponent} from "./components/exam/exam.component";
+import {CreateExamComponent} from "./components/create-exam/create-exam.component";
+import {GroupsComponent} from "./components/groups/groups.component";
+import {CreateGroupComponent} from "./components/create-group/create-group.component";
+import {FacultyComponent} from "./components/faculty/faculty.component";
+import {CreateFacultyComponent} from "./components/create-faculty/create-faculty.component";
 
 const routes: Routes = [
 
@@ -51,6 +57,12 @@ const routes: Routes = [
   {path: 'graduate-works/create', component: CreateGraduateWorkComponent},
   {path: 'disciplines', component: DisciplineComponent},
   {path: 'disciplines/create', component: CreateDisciplineComponent},
+  {path: 'exams', component: ExamComponent},
+  {path: 'exams/create', component: CreateExamComponent},
+  {path: 'groups', component: GroupsComponent},
+  {path: 'groups/create', component: CreateGroupComponent},
+  {path: 'faculties', component: FacultyComponent},
+  {path: 'faculties/create', component: CreateFacultyComponent},
 
 
 ];

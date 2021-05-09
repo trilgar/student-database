@@ -1,0 +1,71 @@
+<div class="container-md">
+  <div class="row">
+    <h3 class="display-4 black">Create new Exam Note</h3>
+    <button class="options mt-4 ml-5" (click)="goBack()">
+      Back to exams
+    </button>
+  </div>
+
+  <div class="alert alert-warning col-md-10 mt-5 error-message" role="alert" *ngIf="this.warningFlag"
+       (click)="warningFlag = false">
+    {{this.warningMessage}}
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Type</span>
+      <select class="form-control" [(ngModel)]="selectedType">
+        <option *ngFor="let type of typeList" [ngValue]="type">
+          {{type}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Discipline</span>
+      <select class="form-control"(change)="filterStudents()" [(ngModel)]="selectedDiscipline" >
+        <option *ngFor="let discipline of listDiscipline" [ngValue]="discipline">
+          Name: {{discipline.name}} , IdTeacher: {{discipline.idTeacher}} , IdGroup: {{discipline.idGroup}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Student</span>
+      <select class="form-control" [(ngModel)]="selectedStudent">
+        <option *ngFor="let student of listStudent" [ngValue]="student">
+          {{student.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Description</span>
+      <input required maxlength="300" type="text"
+             class="form-control"
+             [(ngModel)]="selectedDescription">
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Mark</span>
+      <input min="0" max="5" type="number"
+             class="form-control"
+             [(ngModel)]="selectedMark">
+    </div>
+  </div>
+
+
+  <div class="input-group mt-3" *ngIf="selectedDiscipline!=null && selectedStudent!=null">
+    <div class="col-lg-4 m-0 p-0">
+      <button class="options-table" (click)="onSubmit()">
+        Create
+      </button>
+    </div>
+  </div>
+</div>
+

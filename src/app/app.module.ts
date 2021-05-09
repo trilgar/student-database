@@ -31,6 +31,12 @@ import { GwAdvancedSearchComponent } from './components/gw-advanced-search/gw-ad
 import { DisciplineComponent } from './components/discipline/discipline.component';
 import { CreateDisciplineComponent } from './components/create-discipline/create-discipline.component';
 import { DisciplineLoadComponent } from './components/discipline-load/discipline-load.component';
+import { ExamComponent } from './components/exam/exam.component';
+import { CreateExamComponent } from './components/create-exam/create-exam.component';
+import { FacultyComponent } from './components/faculty/faculty.component';
+import { CreateFacultyComponent } from './components/create-faculty/create-faculty.component';
+import { GroupsComponent } from './components/groups/groups.component';
+import { CreateGroupComponent } from './components/create-group/create-group.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +65,13 @@ import { DisciplineLoadComponent } from './components/discipline-load/discipline
     GwAdvancedSearchComponent,
     DisciplineComponent,
     CreateDisciplineComponent,
-    DisciplineLoadComponent
+    DisciplineLoadComponent,
+    ExamComponent,
+    CreateExamComponent,
+    FacultyComponent,
+    CreateFacultyComponent,
+    GroupsComponent,
+    CreateGroupComponent
   ],
   imports: [
     BrowserModule,
