@@ -63,6 +63,7 @@ const routes: Routes = [
   {path: 'groups/create', component: CreateGroupComponent},
   {path: 'faculties', component: FacultyComponent},
   {path: 'faculties/create', component: CreateFacultyComponent},
+  {path: '**', redirectTo: 'students'},
 
 
 ];

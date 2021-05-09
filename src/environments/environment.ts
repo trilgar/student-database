@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // backend_url: 'http://localhost:8080/'
-  backend_url: 'https://studentdb-front.herokuapp.com/'
+  backend_url: 'https://stddb.herokuapp.com/'
 };
 
 /*
