@@ -1,0 +1,71 @@
+<div class="container-md">
+  <div class="row">
+    <h1 class="display-4 black">Disciplines</h1>
+  </div>
+  <div>
+    <div class="row mt-5">
+      <div class="search-config">
+
+        <input #myInput placeholder="Search for an discipline ..."
+               class="au-input input-long mt-1" type="text"
+               (keyup.enter)="getByName(myInput.value)"/>
+
+        <button class="options ml-1 mt-1" (click)="getByName(myInput.value)">
+          Search
+        </button>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <button class="options ml-1 mt-1" (click)="this.create()">
+        Create New
+      </button>
+    </div>
+  </div>
+  <div *ngIf="disciplines?.length == 0" class="alert alert-warning col-md-10 mt-5" role="alert">
+    No students found.
+  </div>
+  <div class="alert alert-warning col-md-10 mt-5 error-message" role="alert" *ngIf="this.warningFlag" (click)="warningFlag = false" >
+    {{this.warningMessage}}
+  </div>
+  <div class="mt-5 row" *ngIf="disciplines.length !== 0">
+    <div class="custom-table black">
+      <div class="row thead">
+        <div class="col-1">ID</div>
+        <div class="col-3">Name</div>
+        <div class="col-1">ID Teacher</div>
+        <div class="col-2">ID Group</div>
+        <div class="col-4">Options</div>
+
+      </div>
+
+      <div class="mt-5 stripped">
+        <div *ngFor="let discipline of disciplines; index as i">
+          <div class="row">
+            <div class="col-1">{{discipline.id}}</div>
+            <div class="col-3">{{discipline.name}}</div>
+            <div class="col-1">{{discipline.idTeacher}}</div>
+            <div class="col-2">{{discipline.idGroup}}</div>
+            <div class="col-4 pt-2">
+              <button class="options-table" (click)="delete(discipline.id)">
+                Delete
+              </button>
+              <button class="options-table ml-1" (click)="this.showDetails(discipline.id);">
+                Details
+              </button>
+            </div>
+            <div class="row mt-1" *ngIf="discipline.id == this.detailsId">
+              <div class="col-3">Type: {{discipline.type}}</div>
+              <div class="col-3">Hours: {{discipline.hours}}</div>
+              <div class="col-3">Course: {{discipline.course}}</div>
+              <div class="col-3">Semester: {{discipline.semester}}</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,96 @@
+<div class="container-md">
+  <div class="row">
+    <h3 class="display-4 black">Create new Discipline</h3>
+    <button class="options mt-4 ml-5" (click)="goBack()">
+      Back to Disciplines
+    </button>
+  </div>
+
+  <div class="alert alert-warning col-md-10 mt-5 error-message" role="alert" *ngIf="this.warningFlag"
+       (click)="warningFlag = false">
+    {{this.warningMessage}}
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Type</span>
+      <select class="form-control" [(ngModel)]="newDiscipline.type">
+        <option *ngFor="let type of dTypeList" [ngValue]="type">
+          {{type}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Teacher</span>
+      <select class="form-control" [(ngModel)]="newDiscipline.idTeacher">
+        <option *ngFor="let teacher of teacherList" [ngValue]="teacher.id">
+          {{teacher.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Group</span>
+      <select class="form-control" [(ngModel)]="newDiscipline.idGroup">
+        <option *ngFor="let group of groupList" [ngValue]="group.id">
+          {{group.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Name</span>
+      <input required maxlength="20" type="text"
+             class="form-control"
+             [(ngModel)]="newDiscipline.name">
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Hours</span>
+      <input type="number"
+             class="form-control"
+             [(ngModel)]="newDiscipline.hours">
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Hours</span>
+      <input type="number"
+             class="form-control"
+             [(ngModel)]="newDiscipline.hours">
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Course</span>
+      <input type="number"
+             class="form-control"
+             [(ngModel)]="newDiscipline.course">
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Semester</span>
+      <input type="number"
+             class="form-control"
+             [(ngModel)]="newDiscipline.semester">
+    </div>
+  </div>
+
+  <div class="input-group mt-3" *ngIf="newDiscipline.idGroup!=null && newDiscipline.idTeacher!=null">
+    <div class="col-lg-4 m-0 p-0">
+      <button class="options-table" (click)="onSubmit()">
+        Create
+      </button>
+    </div>
+  </div>
+</div>

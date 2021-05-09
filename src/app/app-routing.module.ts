@@ -21,6 +21,9 @@ import {ScienceWorkAdvancedSearchComponent} from "./components/science-work-adva
 import {GraduateWorkComponent} from "./components/graduate-work/graduate-work.component";
 import {CreateGraduateWorkComponent} from "./components/create-graduate-work/create-graduate-work.component";
 import {GwAdvancedSearchComponent} from "./components/gw-advanced-search/gw-advanced-search.component";
+import {DisciplineLoadComponent} from "./components/discipline-load/discipline-load.component";
+import {DisciplineComponent} from "./components/discipline/discipline.component";
+import {CreateDisciplineComponent} from "./components/create-discipline/create-discipline.component";
 
 const routes: Routes = [
 
@@ -36,6 +39,7 @@ const routes: Routes = [
   {path: 'teachers/by-type', component: TeacherByTypeComponent},
   {path: 'teachers/by-exam', component: TeacherByExamComponent},
   {path: 'teachers/heads', component: TeachersHeadsComponent},
+  {path: 'teachers/load', component: DisciplineLoadComponent},
   {path: 'cathedras', component: CathedraComponent},
   {path: 'cathedras/advanced-search', component: CathedraAdvancedSearchComponent},
   {path: 'cathedras/create-new', component: CreateCathedraComponent},
@@ -45,6 +49,9 @@ const routes: Routes = [
   {path: 'graduate-works', component: GraduateWorkComponent},
   {path: 'graduate-works/advanced-search', component: GwAdvancedSearchComponent},
   {path: 'graduate-works/create', component: CreateGraduateWorkComponent},
+  {path: 'disciplines', component: DisciplineComponent},
+  {path: 'disciplines/create', component: CreateDisciplineComponent},
+
 
 ];
 

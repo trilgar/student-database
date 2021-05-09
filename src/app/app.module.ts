@@ -28,6 +28,9 @@ import { ScienceWorkAdvancedSearchComponent } from './components/science-work-ad
 import { GraduateWorkComponent } from './components/graduate-work/graduate-work.component';
 import { CreateGraduateWorkComponent } from './components/create-graduate-work/create-graduate-work.component';
 import { GwAdvancedSearchComponent } from './components/gw-advanced-search/gw-advanced-search.component';
+import { DisciplineComponent } from './components/discipline/discipline.component';
+import { CreateDisciplineComponent } from './components/create-discipline/create-discipline.component';
+import { DisciplineLoadComponent } from './components/discipline-load/discipline-load.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,10 @@ import { GwAdvancedSearchComponent } from './components/gw-advanced-search/gw-ad
     ScienceWorkAdvancedSearchComponent,
     GraduateWorkComponent,
     CreateGraduateWorkComponent,
-    GwAdvancedSearchComponent
+    GwAdvancedSearchComponent,
+    DisciplineComponent,
+    CreateDisciplineComponent,
+    DisciplineLoadComponent
   ],
   imports: [
     BrowserModule,

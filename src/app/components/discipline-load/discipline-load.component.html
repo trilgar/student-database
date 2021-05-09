@@ -1,0 +1,102 @@
+<div class="container-md">
+  <div class="row">
+    <h3 class="display-4 black">Discipline Load</h3>
+    <button class="options mt-4 ml-5" (click)="goBack()">
+      Back to teachers
+    </button>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Select Search Type</span>
+      <select class="form-control" [(ngModel)]="selectedSearchType">
+        <option *ngFor="let searchType of searchTypeList" [ngValue]="searchType">
+          {{searchType}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+
+  <!--if teacher search type selected-->
+  <div class="input-group mt-3" *ngIf="selectedSearchType === 'by teacher'">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Teacher</span>
+      <select class="form-control" [(ngModel)]="selectedTeacher">
+        <option *ngFor="let teacher of teacherList" [ngValue]="teacher">
+          {{teacher.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <!--if cathedra search type selected-->
+  <div class="input-group mt-3" *ngIf="selectedSearchType === 'by cathedra'">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Course</span>
+      <select class="form-control" [(ngModel)]="selectedCathedra">
+        <option *ngFor="let cathedra of cathedraList" [ngValue]="cathedra">
+          {{cathedra.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Semester</span>
+      <input type="number"
+             class="form-control"
+             [(ngModel)]="selectedSemester">
+    </div>
+  </div>
+
+  <div class="input-group mt-3">
+    <div class="col-lg-4 m-0 p-0">
+      <button class="options-table" (click)="onSubmit()"
+              *ngIf="(selectedSearchType === 'by teacher' && selectedTeacher!=null)|| (selectedSearchType === 'by cathedra' && selectedCathedra!=null)">
+        Search
+      </button>
+    </div>
+  </div>
+</div>
+
+<!--search results-->
+<div class="container-md">
+  <div *ngIf="disciplineLoadList?.length == 0" class="alert alert-warning col-md-10 mt-5" role="alert">
+    No discipline load found.
+  </div>
+  <div class="alert alert-warning col-md-10 mt-5 error-message" role="alert" *ngIf="this.warningFlag"
+       (click)="warningFlag = false">
+    {{this.warningMessage}}
+  </div>
+  <div class="mt-5 row" *ngIf="disciplineLoadList.length !== 0">
+    <div class="custom-table black">
+      <div class="row thead">
+        <div class="col-3">Discipline Name</div>
+        <div class="col-1">lectionHours</div>
+        <div class="col-1">seminarHours</div>
+        <div class="col-1">labWorkHours</div>
+        <div class="col-2">consultancyHours</div>
+        <div class="col-2">courseworkHours</div>
+        <div class="col-2">summary</div>
+
+      </div>
+
+      <div class="mt-5 stripped">
+        <div *ngFor="let dl of disciplineLoadList; index as i">
+          <div class="row">
+            <div class="col-3">{{dl.disciplineName}}</div>
+            <div class="col-1">{{dl.lectionHours}}</div>
+            <div class="col-1">{{dl.seminarHours}}</div>
+            <div class="col-1">{{dl.labWorkHours}}</div>
+            <div class="col-2">{{dl.consultancyHours}}</div>
+            <div class="col-2">{{dl.courseworkHours}}</div>
+            <div class="col-2">{{dl.lectionHours + dl.seminarHours + dl.labWorkHours + dl.consultancyHours + dl.courseworkHours}}</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

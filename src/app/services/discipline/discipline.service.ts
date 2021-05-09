@@ -37,6 +37,26 @@ export class DisciplineService {
     const url = `${environment.backend_url}/api/disciplines/by_courses?courses=${courseString}`;
     return this.http.get<Discipline[]>(url);
   }
+
+  getLoadByTeacher(idTeacher: number, semester: number): Observable<TeacherLoad[]> {
+    const url = `${environment.backend_url}/api/disciplines/load/by_teacher?idTeacher=${idTeacher}&semester=${semester}`;
+    return this.http.get<TeacherLoad[]>(url);
+  }
+
+  getLoadByCathedra(idCathedra: number, semester: number): Observable<TeacherLoad[]> {
+    const url = `${environment.backend_url}/api/disciplines/load/by_cathedra?cathedra=${idCathedra}&semester=${semester}`;
+    return this.http.get<TeacherLoad[]>(url);
+  }
+
+  create(discipline: Discipline): Observable<Discipline> {
+    const url = `${environment.backend_url}/api/disciplines`;
+    return this.http.post<Discipline>(url, discipline);
+  }
+
+  delete(id: number): Observable<any> {
+    const url = `${environment.backend_url}/api/disciplines?id=${id}`;
+    return this.http.delete(url);
+  }
 }
 
 export class Discipline {
@@ -56,4 +76,13 @@ export enum DType {
   LabWork = 'LabWork',
   Consultancy = 'Consultancy',
   CourseWork = 'CourseWork'
+}
+
+export class TeacherLoad {
+  disciplineName: string;
+  lectionHours: number;
+  seminarHours: number;
+  labWorkHours: number;
+  consultancyHours: number;
+  courseworkHours: number;
 }

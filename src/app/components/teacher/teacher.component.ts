@@ -78,4 +78,8 @@ export class TeacherComponent implements OnInit {
   headsSearch(): void {
     this.router.navigate(['teachers/heads']);
   }
+
+  load(): void {
+    this.router.navigate(['teachers/load']);
+  }
 }
