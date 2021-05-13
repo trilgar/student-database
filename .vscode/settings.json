@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/cb96d145-09ca-4134-819b-057537e40e10/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/student-database-front",
+    "appService.deploySubpath": "dist\\student-database"
+}
